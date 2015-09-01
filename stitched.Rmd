@@ -1,3 +1,14 @@
+---
+title: 'Simple ITK multi atlas registration and segmentation:  Methods and tutorials'
+author: "Brian B. Avants"
+date: "The University of Pennsylvania, Philadelphia, PA 19104."
+bibliography:  references.bib
+csl: national-science-foundation-grant-proposals.csl
+output:
+  pdf_document
+geometry:  margin=1in
+fontsize: 11pt
+---
 
 ## Expected cost (include direct and indirect/overhead costs) for the
 ## proposed work.
