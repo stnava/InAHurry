@@ -10,13 +10,12 @@ geometry:  margin=1in
 fontsize: 11pt
 ---
 
-## Expected cost (include direct and indirect/overhead costs) for the
-## proposed work.
-##
+## Expected cost (include direct and indirect/overhead costs) for the proposed work.
+
 Total cost = $99,995, Direct cost = $62,497, Indirect cost = $37,498
 
 ## Short description or abstract of the proposed work
-##
+
 We propose to augment Simple ITK with an integrated framework for
 registration and segmentation of biomedical images.  Three components
 will interact: (1) Scalable registration methods that employ point set
@@ -34,9 +33,8 @@ high-resolution microscopy.  We will provide Simple ITK tutorials, unit
 tests as well as the necessary JSON and other metadata needed for Simple
 ITK bindings.
 
-## Address of the Offering Institution (including e-mail, fax, phone,
-## and surface-mail address).
-##
+## Address of the Offering Institution (including e-mail, fax, phone, and surface-mail address).
+
 Office of Research Services,  3451 Walnut Street, Suite P-221
 
 Philadelphia PA 19104-6205
@@ -45,23 +43,19 @@ Email: PennAORS@lists.upenn.edu;  Phone Number: 215-746-0234;  Fax
 Number: 215-898-9708
 
 ## List of all named personnel/investigators in the proposal
-##
-* Brian B. Avants, Ph.D., Department of Radiology, University of
-Pennsylvania.
 
-* James C. Gee, Ph.D., Department of Radiology, University of
-Pennsylvania.
+* Brian B. Avants, Ph.D., Department of Radiology, University of Pennsylvania.
 
-* Paul A. Yushkevich, Ph.D., Department of Radiology, University of
-Pennsylvania.
+* James C. Gee, Ph.D., Department of Radiology, University of Pennsylvania.
 
-* Nicholas J. Tustison, D.Sc., Department of Radiology and Medical Imaging, University of
-Virginia (consultant).
+* Paul A. Yushkevich, Ph.D., Department of Radiology, University of Pennsylvania.
+
+* Nicholas J. Tustison, D.Sc., Department of Radiology and Medical Imaging, University of Virginia (consultant).
 
 # Technical Proposal
-#
+
 ## Purpose of the proposed work
-##
+
 **Annotations and anatomical labelings are critical to the
 interpretation and statistical analysis of biomedical images.** However
 such expert labeling is both expensive and time consuming to obtain and
@@ -129,7 +123,7 @@ reach of these methods.
 label cortical or deep structures in the brain.
 
 ## JLF theory: "Multi-Atlas Segmentation with Joint Label Fusion"
-##
+
 A matrix $M_x$ is defined by the number of atlas segmentations one has.
 
 $M_x(i,j)$ measures joint atlas errors wrt a target segmentation at a
@@ -142,9 +136,9 @@ error.
 > methods is that it explicitly considers correlations among atlases,
 > i.e., the dependence matrix, into voting weight assignment to reduce
 > bias in the atlas set.
->
+
 ## JLF theory: "Multi-Atlas Segmentation with Joint Label Fusion"
-##
+
 The expected label difference between the consensus solution obtained
 from weighted voting and the target segmentation is: $w_x^T M_x w_x$.
 
@@ -153,7 +147,7 @@ Find atlas weights, $w_x$, for each of $A^i$ atlases, st $$ w_x^T ( M_x
 w_x(i)=1$.
 
 ## JLF theory: "Multi-Atlas Segmentation with Joint Label Fusion"
-##
+
 Define $$ K_m = \langle |~A^{i,m}_N - T^{m}_N~|, |~A^{j,m}_N - T^{m}_N~|
 \rangle $$ then $$ M_x(i,j) =  ( \sum_m K_m )^\beta $$ with $N$
 representing a neighborhood calculation, $A^{i,m}$ representing the
@@ -164,7 +158,7 @@ Finally, local patch search is used to improve the neighborhoods that
 correspond.
 
 ## JLF Example
-##
+
 Suppose that a pair of atlases $A_1$ and $A_2$ produce statistically
 independent label errors for a given target image. If $A_1$ produces a
 wrong label 50\% of the time and $A_2$ produces a wrong label 20\% of
@@ -193,7 +187,7 @@ platform.  We feel this is best illustrated with a detailed example of
 this tutorial material which follows here.
 
 ## Simple ITK tutorial material for JF-augmented brain mapping
-##
+
 We will employ freely available *real neuroimaging data* on which to
 base the tutorial material and to promote reproducibility and
 transparency. We will employ the Pediatric Template of Brain Perfusion
@@ -227,7 +221,7 @@ community to this broadly applicable and powerful quantification
 technology.
 
 ## Relationship and benefits of the project to the SimpleITK/ITK effort
-##
+
 Registration and segmentation are complementary tools that have often
 existed along independent software development paths.  Registration
 teams rarely intersected with segmentation teams.  Joint Fusion and
@@ -237,10 +231,10 @@ improve upon the results obtained by either independently.  Making these
 bleeding edge algorithms available to the ITK and Simple-ITK community
 will break down barriers between "code aware" and "code naive" user
 bases further allowing the computational scientist to communicate
-effictively with biological and medical scientists.
+effectively with biological and medical scientists.
 
 ## Advantages that the proposed work derives from SimpleITK/ITK
-##
+
 We are excited about the opportunity to port our current JF and Atropos
 segmentation framework into the core of ITK.  Our prior experience has
 shown that the quality and lifespan of such algorithms is greatly
@@ -249,9 +243,8 @@ testing, consistent use of valgrind to find memory defects and
 cross-platform CMake-based ctests are all integral to the further
 improvement of the C++ backbone of these methods.
 
-## How the proposed work differs from or relates to existing work in ITK
-## and its related software
-##
+## How the proposed work differs from or relates to existing work in ITK and its related software
+
 There is a substantial level-set framework within ITK.  There also
 exists a relatively under utilized statistical framework that allows
 methods such as k-means clustering followed by Markov random field
@@ -262,7 +255,7 @@ probability of a segmentation map explicitly.  Consider the equation
 implemented by Atropos.  **FIXME.**
 
 ## Personnel and resources to be committed to the proposed work
-##
+
 The personnel that will implement this plan has extensive background
 working on C++.  Furthermore, the team has many decades of experience
 contributing specifically to ITK.  Dr. Avants made his first commit to
@@ -314,7 +307,7 @@ For institutional resources committed to this work, please see the
 business portion of the proposal.
 
 ## Budget for the work.
-##
+
 We request a total of $100,000 which includes both direct and indirect
 costs.
 
