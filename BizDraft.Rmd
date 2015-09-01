@@ -1,0 +1,351 @@
+---
+title: 'Simple ITK multi atlas registration and segmentation: Methods and tutorials (Business Proposal)'
+author: "Brian B. Avants"
+date: "The University of Pennsylvania, Philadelphia, PA 19104."
+output: pdf_document
+geometry: margin=1in
+fontsize: 11pt
+---
+
+```{r setup,eval=TRUE,results='hide',warning=FALSE,echo=FALSE}
+# set this for your own compilation
+bd='/Users/stnava/data/ANTsTutorial/'
+```
+
+
+## Expected cost (include direct and indirect/overhead costs) for the proposed work.
+
+Total cost = $99,995, Direct cost = $62,497, Indirect cost = $37,498
+
+## Short description or abstract of the proposed work
+
+We propose to augment Simple ITK with an integrated framework for registration and segmentation of biomedical images.  Three components will interact: (1) Scalable registration methods that employ point set representations of *both* fixed and moving images will, for suitable forms of data, allow accurate registration with reduced memory footprint; (2) Registration methods will feed data into classical prior-based image segmentation based on expectation-maximization algorithms; (3) Registration methods will also initialize multi-atlas segmentation, specifically the class of Joint Fusion multi-atlas segmentation methods.  This contribution would extend the applicability of the current ITK version 4 analysis framework to include full image quantification pipelines that are appropriate for diverse application areas such as template-based brain mapping or quantitative high-resolution microscopy.  We will provide Simple ITK tutorials, unit tests as well as the necessary JSON and other metadata needed for Simple ITK bindings.
+
+## Address of the Offering Institution (including e-mail, fax, phone, and surface-mail address).
+
+Office of Research Services,  3451 Walnut Street, Suite P-221
+
+Philadelphia PA 19104-6205
+
+Email: PennAORS@lists.upenn.edu;  Phone Number: 215-746-0234;  Fax Number: 215-898-9708 
+
+## List of all named personnel/investigators in the proposal
+
+* Brian B. Avants, Ph.D., Department of Radiology, University of Pennsylvania.
+
+* James C. Gee, Ph.D., Department of Radiology, University of Pennsylvania.
+
+* Paul A. Yushkevich, Ph.D., Department of Radiology, University of Pennsylvania.
+
+* Nicholas J. Tustison, Ph.D., Department of Radiology, University of Virginia (consultant).
+
+## 1. Description of the offering firm or institution, its history, location
+The University of Pennsylvania, located in Philadelphia, has a proud tradition of
+intellectual rigor and boundary-breaking scientific innovation that dates back to
+its founder, Benjamin Franklin. Penn is one of the world's most powerful research
+and teaching institutions, with a research budget last year topping $800 million
+and more than 4,000 active faculty members. The scale and interdisciplinary
+character of research and teaching sets Penn apart, and the highly ranked Perelman
+School of Medicine is one of the top recipients of NIH funding in the country.
+As a leading institution for research in medical image analysis techniques, Penn provides an
+ideal environment to host the proposed image processing software development.
+There is a wealth of medical imaging focused collaboration across laboratories in the
+Departments of Neurology, Psychology, Radiology and Psychiatry. More specifically, there
+is a long standing and highly productive collaboration between the Penn Computing &
+Science Laboratory (PICSL) and the Center for Functional Neuroimaging (CfN). Together,
+these facilities will provide the necessary resources to execute the proposed work.
+
+The University of Pennsylvania is a world-class institution with first rank programs in
+medical science in several disciplines. The School of Arts and Sciences also provides
+coursework necessary for mathematical training and seminar series relevant to the proposal.
+The Engineering School has the coursework available to support training in computer science
+and also hosts seminar series with invited speakers from throughout the world.
+In total, the gamut of  formal training and more informal
+interaction is available at the University of Pennsylvania.
+
+The University of Pennsylvania has a wealth of resources and facilities that will contribute
+to the success of the proposed work. In addition to PICSL and CfN, there are multiple
+institutes and research centers that are relevant to the proposed work as their reliance
+upon image processing techniques provides an ideal user-base and source of heterogeneous data to help
+ensure the generalized utility and robustness of the software:
+
+* The Center for Advanced Magnetic Resonance Imaging & Spectroscopy
+* The Neuroscience Neuroimaging Center
+* Center for Cognitive Neuroscience
+* Institute on Aging
+* Center of Clinical Epidemiology & Biostatistics
+* Institute for Translational Medicine & Therapeutics
+* The Mahoney Institute of Neurological Sciences.
+
+## 2. The place of performance for the proposed work.
+
+Housed in the Department of Radiology, PICSL is a major research
+resource in biomedical image analysis and computing at the Schools of Medicine
+and Arts and Sciences of the University of Pennsylvania. Over the
+past two decades, the laboratory has collaborated with numerous
+investigators, including dozens from extramural
+organizations, and have provided them with comprehensive support in
+cutting-edge image analysis and processing.
+PICSL is also part of the graduate groups of the Departments of
+Computer and Information Science, Applied
+Mathematics and Computational Science, and Bioengineering. It is
+affiliated with the Centers for Functional Neuroimaging,
+for Bioinformatics, for Cognitive Neuroscience and for Human Modeling
+and Simulation, the Institutes
+for Medicine and Engineering and for Translational Medicine and
+Therapeutics, the General Robotics, Automation,
+Sensing and Perception Laboratory, and the Leonard Davis Institute of
+Health Economics, and is a founding
+member of the Center for Health Informatics at Penn, the Penn Center
+for Musculoskeletal Disorders, and the
+National Library of Medicine Insight Consortium. PICSL was the
+inaugural collaboration partner of the National
+Centers for Biomedical Computing, which are specifically charged to
+foster translational research in biomedical computing.
+
+Extensive computer facilities for technical development and data
+processing are available at PICSL and the
+Center for Functional Neuroimaging data analysis facility, which
+houses the computing resources for the NIH
+funded Neuroscience Neuroimaging Center, whose Morphometry, Statistics
+and Visualization Core is directed
+by Dr. Gee. PICSL is equipped with a large number of dual-processor
+workstations, all networked via gigabit
+Ethernet to a high performance 576-core compute cluster with more than 200TB of
+on-line RAID storage with a dedicated tape backup system. The cluster is located in a University-run commercial-grade server room with redundant power supplies, UPS power backup systems, fire suppression system and 24-hour restricted access and security. The cluster provides accces to a variety of commercial and customized software packages are available for
+statistical analysis, scientific computing, code development, and data visualization.
+
+PICSL has a long track record of methodological innovation in medical
+image analysis as well as a strong commitment to translational
+research. In addition to its founding role and
+continuing support of the Insight Toolkit (ITK), PICSL leads the
+development of several significant open-source
+tools, including ITK-SNAP, ANTs/ANTsR, PipeDream and DTI-TK, and serves as
+as a key contributor to Camino and VoxBo.
+Several of the tools are consistently among the most active on NITRC.
+
+## 3. The Business Proposal should also describe any experience by the offering institution for software quality assurance, open-source software development and delivery
+
+The personnel involved in this application have the motivation
+and range of expertise necessary to bring these plans to fruition. The involvement of key
+developers from existing toolkits, including most notably ITK, makes the ambitious plan
+for one-year deliverables feasible.
+
+#### James Gee, PhD, Associate Professor of Radiologic Science and Computer and Information Science
+brings extensive software engineering, research, as well as administrative
+experience to his role as co-PI of the proposed project. Dr. Gee will be responsible for the
+overall conduct of the project, the management of the software development team, including
+coordination of activities between the University of Pennsylvania, NLM and other institutional
+participants of the ITK initiative. Dr. Gee is Director of the HHMI-NIBIB (Howard
+Hughes Medical Institute-National Institutes of Biomedical Imaging and Bioengineering)
+Interfaces Program in Biomedical Imaging and Informational Sciences and Co-Director
+of the Translational Biomedical Imaging Center, Institute for Translational Medicine and
+Therapeutics. Dr. Gee’s major area of research experience and expertise is in the field
+of Biomedical Image Analysis, and his group, the Penn Image Computing and Science
+Laboratory (PICSL), is at the forefront of research and application in all of the quantitative
+methods represented in the field, including segmentation, registration, morphometry
+and shape statistics, with numerous interdisciplinary collaborations spanning a variety of
+organ systems and all of the major and emerging modalities in biological/biomaterials
+imaging and in vivo medical imaging. These collaborative studies apply methods developed
+at PICSL to quantify the ways in which anatomy can vary in nature, over time, or as
+a consequence of disease or intervention. These methods aim to improve the detection
+of subtle changes on imaging studies and thus the specificity and reliability of diagnosis
+in patients with diseases who exhibit such changes and for whom there are often no
+known clinical diagnostic procedures. A precise understanding of normal and pathological
+variations in anatomy is also prerequisite for accurate localization of function that is
+critical to the success of imaging studies of organ structure-function relationships in health
+and disease. Dr. Gee’s current work includes applications of image analysis to study the
+biomechanics of moving organs; the normal development and pathological correlates of
+brain structure; and the correlation between brain structural changes and cognitive deficits
+in central nervous system disorders.
+
+A primary goal of this research is to translate into practical tools and make freely and
+publicly available cutting-edge image analysis methods that are essential for extracting
+the most information from medical imaging data. Pertinent to this quotation, the PI was a
+founding board member of the Insight Software Consortium and his group was an original
+member of the Insight consortium. As part of the original ITK contract, Dr. Gee’s group
+contributed over 40 classes related to the finite element programming framework and
+registration algorithms built on the framework. The broad categorization of the team’s
+contributions to the original toolkit include:
+
+* Providing state-of-the-art methods for variational methods and deformable registration
+and a finite element programming framework.
+* Implementing various utility classes including spatial transformations, linear system
+solvers, and interpolation functions.
+* Developing example applications to demonstrate general FEM programming, and
+the use of FEM to implement variational approaches to multi-resolution, non-rigid
+registration, including landmark and various deformation smoothness constraints.
+* Participating with various consortium partners in the development of the registration
+framework.
+* Providing user feedback on components developed by consortium partners, including
+the mesh class and matrix facilities in VNL.
+
+As an acknowledged authority with over 20 years of experience, Dr. Gee’s accomplishments
+have been recognized in regular prestigious speaking roles at national and international
+meetings; invited contributions to the major journals in the field; and service on
+numerous government and private foundation panels, editorial boards, and program committees
+for the preeminent scientific forums in biomedical imaging. Dr. Gee has a long
+track record of NIH grant support, in addition to significant sponsorship from industry and
+foundations.
+
+#### Brian Avants, PhD, Research Assitant Professor in Radiology
+will share responsibility for
+the overall conduct of the project as co-PI. He is the lead software engineer, researcher
+and developer of Advanced Normalization Tools (ANTs) and, along with Dr. Tustison, provides software support. ANTs
+was the product of refactoring and reimplementing Dr. Avants’s dissertation work. ANTs is
+the product of: (1) extensive research into the fundamental mathematics of normalization;
+(2) domain experience with specific application scenarios in standard and cutting-edge
+research; (3) refinement through independently evaluated gold-standard evaluation; (4) a
+committed open-source effort to disseminate this research in a well-documented, software
+engineered, self-testing code base. Thus, ANTs is appropriate for the high-reliability,
+large-scale production needs emerging in neuroscience. ANTs is installed and in regular
+use for brain and hippocampus studies in high profile laboratories at Stanford University,
+MIT, the University of Wisconsin, Columbia University, UC Irvine, the UC Davis MIND
+institute and for MRI-based studies of the mouse at UNC, in addition to UCLA’s LONI.
+This wide variety of applications and users is evidence of success in reaching preliminary
+dissemination and usability goals. However, expanded and deeper impact would occur by
+unifying effort and support with the ITK distribution. More recent work has led to
+the development of ANTsR, an R library that interfaces state of the art image processing
+with R statistical methods. The project grew out of the need, at University of Pennsylvania,
+to develop large-scale analytics pipelines that track provenance from scanner to scientific
+study. ANTsR wraps an ANTs and ITK C++ core via Rcpp to access these frameworks
+from within R and support reproducible analyses.
+
+Advanced Normalization Tools (ANTs, originating at [sourceforge.net](sourceforge.net) on 2008-06-26 and now residing at [http://stnava.github.io/ANTs/](http://stnava.github.io/ANTs/) ) is a systematic framework for quantitative biological image analysis based on the Insight ToolKit [www.itk.org](www.itk.org).  ANTs was first created to rapidly disseminate our latest research to the community of scientists who depend on imaging analytics and to allow them to study different organ systems, species or modalities with the same sound foundation.  While originally focused on diffeomorphic image registration, ANTs now incorporates novel and cutting-edge methods for segmentation, feature extraction and, more recently, complete statistical pipelines via ANTsR [http://stnava.github.io/ANTsR/](http://stnava.github.io/ANTsR/).  In 2014, there were nearly 2,000 citations to ANTs and the software is cloned, downloaded or otherwise accessed over 100-200 times per week, on average at github.  The sourceforge site hosts a similar number of visits and downloads.  ANTsR is accessed on average 50 times per week---a substantial number for a new software.  There are also over 500 discussion topics on the ANTs sourceforge community site, nearly 100 topics on the github site and over 50 help-focused emails to the personal addresses of developers.  Generally, response time to requests for help is within a few hours with rare occasions taking up to a day or two.
+
+ANTs and ANTsR support imaging analysis in two, three and four dimensions.  The framework is also designed explicitly for multivariate analyses.  Nearly every tool within ANTs/R is multivariate.  For example, the ANTs registration tool is capable of combining several metrics each with its own weight function.  Complementary metrics might measure a different imaging modality (e.g. T1 and T2) or might include a different feature (landmarks) or type of similarity (mutual information and correlation) in addition to the core metric.  ANTs registration is also optimized for fast computation of high-dimensional diffeomorphic transformations with regularization over space or over space and time simultaneously, the latter being appropriate for longitudinal studies or studies of cardiac dynamics.  The Atropos segmentation tool also incorporates multiple modalities via parametric models (Mahalanobis distance) or non-parametric models (products of joint probabilities).  More recently, we implemented, in ANTsR, the challenge-winning multi-resolution voxel-wise neighborhood random forest (MRVNRF) prediction algorithm which won the BRATS2013 tumor segmentation challenge. The extensive and varied tools provided by ANTs/ANTsR demonstrate high-level expertise and knowledge regarding the current demands of the medical imaging community.
+
+These tools include:
+
+* Accurate high-dimensional and flexible digital diffeomorphisms with multivariate similarity: ANTs implements transformation models that are robust to noise and yet are able to exploit high resolution detail available in modern neuroimaging.
+* Multiple modality template building in the digital diffeomorphic space: We exploit the fact that diffeomorphisms encode a high-dimensional metric space to compute shape and appearance averages of organs and organ systems based on multiple modality medical imaging.  The recent Pediatric Template of Brain Perfusion, for instance, distributes a dictionary of normal variability in cortical structure, diffusion tensor metrics, resting bold connectivity and cerebral blood flow during adolescence.  We also relate these modalities to demographic metrics such as IQ, age and socioeconomic factors.
+* Prior-based multivariate/multiple modality segmentation in the public domain: ANTs distributes Atropos as a multi-channel segmentation tool that leverages tunable spatial priors.  Atropos is able to segment large numbers of regions from multiple imaging modalities while maintaining the integrity of expert-based prior knowledge.  This work is valuable to both human brain mapping and non-human mammalian imaging.
+* Volumetric sub-voxel accurate thickness, evaluated against Freesurfer: We contributed the first large-scale comparison of voxel-based, volumetric thickness versus the standard Freesurfer surface-based thickness in terms of prediction power in a large lifespan T1 dataset.  The ANTs-based cortical thickness measure improved prediction of both age and gender relative to Freesurfer in a pure training and testing evaluation framework.
+* Joint intensity and joint label fusion: The ANTs toolkit distributes Joint Label Fusion (JLF) for multiple modality segmentation based on large datasets of expert annotated medical images, e.g. neuroanatomical regions defined in T1 MRI or major tracts defined in DTI. JLF has won several international anatomical segmentation challenges in medical imaging.
+* Broad distribution channels:  ANTs technology is distributed through the Insight ToolKit (ITK), the Slicer toolkit, Neurodebian, BrainsFit and in SimpleITK.  Thus, the impact of ANTs is beyond what we can directly measure from references in publications or direct software downloads.  Furthermore, our liberal distribution policies for ANTs software cannot enforce specific referencing practices - many papers, for instance, only reference neurodebian or one of the ANTs websites in publication.
+* Eigenanatomy is a parameter-free tool for generating data-driven regions of interest:  Our recent paper defined a novel approach to computing an optimal set of regions of interest from population neuroimaging data.  This is one of the only data-driven image decomposition methods with *in vivo* findings that have been validated post-mortem.  Indeed, regions of the white matter implicated by Eigenanatomy in a neuroimaging study led to verified pathology in a classification analysis of tau and TDP frontotemporal lobar degeneration.
+* Sparse canonical correlation analysis (SCCAN): ANTs and ANTsR also enable a "supervised" version of Eigenanatomy based on a modernized sparse and geometrically regularized update to Hotelling's classic canonical correlation analysis.  This tool has been used to focus testing for imaging genomics studies, to relate multiple imaging modalities to each other and to map structural networks that underlie cognitive performance.
+* Automated template construction with priors based on symmetric normalization (SyN, 800+ references to the original paper), JIF and Atropos: An anatomical or functional template is more than just an average image - it is also the set of probabilistic priors and spatial maps of anatomy that accompany the image.  In the last several years, we have established a system for generating new templates based on existing priors.  This leverages our prior work on template construction, multi-atlas labeling and tissue segmentation to generate probabilistic templates that are ready to use on new problems.
+Such templates form the basis of our large-scale multiple modality analysis framework.
+* Learning one imaging modality from another to understand modality redundancy and structure-function relationships:  We recently developed the RIPMMARC algorithm to show that nearly 50\% of the variability in ASL-based cerebral blood flow images can be predicted from T1 neuroimaging.  However, we also established that there is valuable signal in the CBF images that cannot be predicted from the T1 data.  That is, the residual CBF signal (the putative "functional signal") is related to demographic variables as is the structural component.  This tool has value, yet to be explored, for performing imputation and can be extended to other modalities, species or organ systems.
+* A highly-customizable adaptive processing pipeline for cerebral blood flow calculation from ASL: ANTsR has enabled us to implement a large-scale evaluation of cerebral blood flow calculation from arterial spin labeling.  This pipeline was used in adolescent and neurodegenerative subjects, and is undergoing further evaluation in a lifespan population and comparison with PET.
+* Joint intensity and landmark-based registration:  Purely image-driven registration can be improved in terms of accuracy and consistency by using anatomical labels or landmarks to guide a registration.  ANTs is one of the only currently available tools that allows scientists to jointly optimize, in a weighted fashion, the registration of images and anatomy.  This functionality is frequently employed for guided registration with hippocampal subfields or for registration based on structure plus tractography.
+* ANTs is founded on deep software testing and practical evaluation across organ systems and species, deep testing of registration and segmentation and detection power capabilities.  Several papers have established the value of our methods for improving the reproducibility of prediction models based on ANTs image processing and statistical methods.  We have also won several challenges e.g. in heart, lung, brain, and other organ systems.
+* Multi-start optimization and feature selection/masking:  ANTs has several powerful but under-utilized registration tools that include global optimization and feature selection.  These tools can be used to improve robustness of registration in large datasets, in challenging datasets or in datasets with only partial structure (lesions, masking, cropped images, images with missing data etc.).
+* Standardization of registration architecture and transformations through our work on ITK version 4+.  We are part of the ITK development team and have worked with the community over the last 15 years to evaluate and improve the standardized transformation frameworks that are used throughout our own and several related software infrastructures.
+* ANTsR implements and distributes novel MRV-NRF and other prediction algorithms that improve machine learning via image-specific regularization.
+* Subject-specific denoising solutions for functional MRI data, specifically arterial spin labeling (ASL), have the potential to revolutionize the applicability of cerebral blood flow to new populations with high variability (neurodegeneration, TBI, etc).  Detection power is also likely to improve when these new methods are combined with our latest registration techniques even in control populations, in non-human mammals or in MRI beyond the brain, e.g. cardiac ASL.
+* Our ANTs and ITK methods are instrumental to several recent non-human mammal studies including developing the Waxholm template space, the Allen Brain Atlas, the Possum template space and a chimpanzee template.  These methods have been widely adopted and applied to studies published in high-impact journals such as Nature, PNAS, etc.
+
+#### Nicholas Tustison, PhD, Senior Software Engineer (Consulting)
+has been involved in various
+aspects of ITK development since he arrived at PICSL in 2004. He was initially charged
+with providing user support for the ITK FEM library and acting as the PICSL’s liaison
+with the ITK development community. Related responsibilities include participation in
+weekly t-cons with other ITK developers and encouraging the translational component of
+lab research particularly towards open-source offerings. Over the years, Dr. Tustison has
+continued to develop open-source software for the Insight Toolkit.
+
+Dr. Tustison’s initial experience with ITK concerned fulfillment of the requirements of
+a 2004-2005 A2D2 grant. Specifically, he designed and coded a set of classes to handle
+graph data types and an implementation of the popular “graph cuts” segmentation
+algorithm, which was Insight Journal’s Publication of the Month for December 2008.
+Another early offering to the ITK community was based on Dr. Tustison’s expertise in
+B-splines which resulted in a generalized implementation of a popular B-spline approximation
+algorithm. He has continued to improve his initial code offering recently introducing
+a parallelized version for improved performance. This B-spline approximation
+algorithm is also the basis for a new form of free-form deformation (FFD) image registration
+, which was implemented in the ITK-based, open-source ANTs. Also of
+interest was its application to the popular N3 bias correction algorithm for improved performance,
+which was recently implemented as an ITK filter by Dr. Tustison and slated
+for inclusion in ITK version 3.18. This ITK implementation of N3 was Insight Journal’s
+Publication of the Month for December 2009 and was spotlighted in the The Kitware
+Software Developer’s Quarterly Newsletter.
+
+Dr. Tustison’s work has been well received by the community. For example, another
+early offering was the implementation of a recently developed signed distance transform
+filter which was orders of magnitude faster than what had existed at that time [52]. Upon
+using it, one member of the ITK community wrote the following to the developer’s list:
+
+> Today has been a very productive day, and I wanted to share my
+> appreciation to the entire ITK group for making this possible.
+> Good work Penn Image Computing and Science Laboratory!
+
+Dr. Tustison continues to develop a wide range of software tools to facilitate various
+aspects of image analysis research. This includes tools used for visualization, such as
+versatile grid image creation and an RGB faux-colormapping framework for scalar
+intensity images, which was also featured in a previous version of the The Kitware Software
+Developer’s Quarterly Newsletter. Also included among Dr. Tustison’s contributions
+are basic image processing tools which were previously absent, for example, tools
+for Gabor filtering, image kernel convolution, Gaussian interpolation, image
+features for classification/characterization (the latter was Insight Journal’s Publication
+of the Month for April 2009), the “Intelligent scissors” shortest path algorithm,
+and label overlap measures for assessing segmentation results. Dr. Tustison also
+uses the open-source Insight Journal to disseminate his latest ongoing research developments
+including digital topology concepts and point set registration.
+
+#### Paul Yushkevich, PhD, Assistant Professor of Radiology
+will provide leadership and
+expertise in the specific areas of ITK development and software engineering. Dr. Yushkevich’s
+education, post-graduate training and professional experience puts him in an excellent
+position to make a unique and significant contribution to this project. ITK lies at
+the intersection of computer science and biomedical sciences. Likewise, Dr. Yushkevich’s
+training and expertise span these two areas. His educational background is in computer
+science, where as part of his PhD work, Dr. Yushkevich developed novel techniques for
+shape analysis via the medial representation. Soon after joining the University of Pennsylvania,
+he was awarded a K25 Mentored Career Development Award, which has allowed
+him to expand his knowledge of the biomedical and medical imaging fields and become
+a more vertically integrated image analysis researcher. Dr. Yushkevich’s published work
+spans multiple imaging modalities, species and body systems; it includes detailed morphometry
+of the hippocampus in human in vivo and postmortem MRI; novel methods for
+the analysis of diffusion MRI; structure-specific fMRI analysis; fusion of MRI and histology
+of the mouse brain; modeling and segmentation of the myocardium; and other areas.
+
+Dr. Yushkevich has extensive experience working with and contributing to the Insight
+Toolkit. In 2004, a company that he started was awarded an A2D2 contract from the
+NIH/NLM, under which he integrated a semi-automatic image segmentation tool into ITK.
+The resulting tool, ITK-SNAP, has become a widely popular software application. Users
+have downloaded ITK-SNAP from 23 of the world’s 25 top-ranked universities (Newsweek,
+2006) and from all of the 25 US universities with best-funded medical schools (ranked
+by 2005 NIH funding level). A substantial number of downloads comes from commercial
+entities, such as GE Research and Siemens, as well as national research institutes
+and laboratories, including NIH, Los Alamos and Oak Ridge National Laboratories. ITK-SNAP
+is currently supported by an R03 grant from the NIH/NIBIB. Today, it is the third
+most downloaded tool out of 250+ tools featured on NITRC, the NIH clearinghouse for
+neuroimaging software. Dr. Yushkevich has also contributed code to the ITK as the first
+author of two articles in the Insight Journal and co-author on four articles. This specific
+project also requires expertise in distributed processing of large datasets, which he will
+be able to provide based on my experience working on the Allen Brain Atlas and the
+Alzheimer’s Disease Neuroimaging Initiative (ADNI).
+
+#### Additional personnel
+from PICSL will occupy the remaining positions in the team.
+
+## 4. Policies regarding the distribution of intellectual property under open source licenses (specifically the use of a BSD-style license, familiarity with the licensing practices associated with ITK, or direct release of property to the public domain)
+
+It is an explicit mission of PICSL to create comprehensive tools for brain mapping
+that are broadly accessible to the user community and improve the quality
+of neuroscience performed with imaging. In keeping with this mission, PICSL has an
+long history of developing and distributing open-source software and public data that
+is freely available. The software developed as PICSL is typically distributed with BSD-style
+licenses in order to (1) make the software freely available to everyone; (2) permit the dissemination and commercialization
+of enhanced or customized versions of the software, or incorporation of the software or pieces of it into
+other software packages, with the restriction that the source code of the resulting software also be made available
+under the BSD-styel license; (3) permit anyone to continue development of the software. This preserves utility to the
+community in the event that we are unable or unwilling to continue development; (4) permit anyone to modify the
+source code and to share modifications with others. As with the most recent versions of ITK, the sofware developed here
+will be released under the Apache 2.0 license.
+
+The development path for this software will also be shared freely. The process will be guided by prior work
+as a lead developers in the NIH-sponsored Insight ToolKit (ITK). Professional software development
+practices of that project will be applied to the current work. These practices include: multi-platform open-source software design and compilation (based on C++ generic programming in the style of ITK with multi-platform compilation managed
+by CMake); using online collaborative resources for maintaining informal specifications and design documents
+(JIRA); collaborative development aided by source version control (Git); extensive inline documentation of the
+code (Doxygen); automated builds and unit-testing on multiple operating systems (CTest); monitoring of build and
+test results using online dashboards (CDash); a rapid develop-test-release cycle (enabled by SourceForge.net’s
+release facilities). Implemented algorithms will be cross-platform and compile on, at minimum, MacOS, Windows and
+Linux-based operating systems such that usability and accessibility will be maximized. The CPack software will
+be used to provide 32-bit and 64-bit installation packages for Windows, MacOS and Linux operating systems and
+guarantee that the methods will be broadly usable by the community.
+We will adopt ITK-based style for development that leverages code review, which we will
+conduct via github, and multiplatform testing architectures.
