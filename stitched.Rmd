@@ -86,7 +86,7 @@ identifying the state-of-the-art in MAL.
 
 **Joint Fusion (JF)** [@Wang:2012aa;@Wang:2013aa] is perhaps *the state-of-the-art
 algorithm* for MAL that is capable of predicting anatomical labels with
-accuracy that rivals expert anatomists [@Yushkevich]. JF has proven its
+accuracy that rivals expert anatomists [Yushkevich:2010aa]. JF has proven its
 effectiveness in lung [@Tustison:2015aa], cardiac data [@x], the human brain
 [@x] and in multiple modality canine MRI [@x].  This technology has
 previously been made available only through a research-grade C++
