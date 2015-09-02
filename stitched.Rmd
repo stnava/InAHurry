@@ -7,7 +7,7 @@ csl: national-science-foundation-grant-proposals.csl
 output:
   pdf_document
 geometry:  margin=1in
-fontsize: 12pt
+fontsize: 11pt
 ---
 
 ## Expected cost (include direct and indirect/overhead costs) for the proposed work.
@@ -24,7 +24,7 @@ forms of data, allow accurate registration with reduced memory
 footprint; (2) Registration methods will feed data into classical
 prior-based image segmentation based on expectation-maximization
 algorithms; (3) Registration methods will also initialize multi-atlas
-segmentation, specifically the class of Joint Fusion multi-atlas
+methods, specifically the class of Joint Fusion multi-atlas
 segmentation methods.  This contribution would extend the applicability
 of the current ITK version 4 analysis framework to include full image
 quantification pipelines that are appropriate for diverse application
@@ -33,7 +33,7 @@ high-resolution microscopy.  We will provide Simple ITK tutorials, unit
 tests as well as the necessary JSON and other metadata needed for Simple
 ITK bindings.
 
-## Address of the Offering Institution (including e-mail, fax, phone, and surface-mail address).
+## Address of the Offering Institution.
 
 Office of Research Services,  3451 Walnut Street, Suite P-221
 
@@ -80,9 +80,9 @@ involves common steps regardless of the underlying method. These steps
 include: (1) registration, (2) label transformation and (3) local
 statistical prediction models.  The end product of this procedure is,
 for a given new subject, the algorithmic "best guess" at the full
-anatomical label set across the image. The quality of this guess differs
+anatomical label set within the image. The quality of this guess differs
 across algorithms and substantial effort has been invested in
-identifying the state-of-the-art in MAL.
+identifying the state-of-the-art in MAL.  [@SATA]
 
 **Joint Fusion (JF)** [@Wang:2012aa;@Wang:2013aa] is perhaps *the state-of-the-art
 algorithm* for MAL that is capable of predicting anatomical labels with
@@ -110,7 +110,7 @@ with other likelihood models.  For registration, we will extend the
 current framework with more memory efficient image data representations.
  This approach will build upon existing sub-sampling frameworks within
 ITK version 4 registration to allow registration to be driven by a
-sparse image representation which will allow adaptive registration
+sparse image representation.  This efficent data representation  will allow adaptive registration
 strategies that can be customized for large datasets and will extend the
 reach of these methods.
 
@@ -122,49 +122,14 @@ reach of these methods.
 * We use it regularly in our studies to build template priors and to
 label cortical or deep structures in the brain.
 
-## JLF theory: "Multi-Atlas Segmentation with Joint Label Fusion"
-
-A matrix $M_x$ is defined by the number of atlas segmentations one has.
-
-$M_x(i,j)$ measures joint atlas errors wrt a target segmentation at a
-voxel.
-
-Entries in $M_x$ relate to the likelihood two atlases make the same
-error.
-
 > The key difference between joint label fusion and other label fusion
 > methods is that it explicitly considers correlations among atlases,
 > i.e., the dependence matrix, into voting weight assignment to reduce
 > bias in the atlas set.
 
-## JLF theory: "Multi-Atlas Segmentation with Joint Label Fusion"
 
-The expected label difference between the consensus solution obtained
-from weighted voting and the target segmentation is: $w_x^T M_x w_x$.
+**FIXME** stuff about sparse representation
 
-Find atlas weights, $w_x$, for each of $A^i$ atlases, st $$ w_x^T ( M_x
-+ \alpha \text{Id} ) w_x $$ is minimized subject to $\sum_{i=1}^n
-w_x(i)=1$.
-
-## JLF theory: "Multi-Atlas Segmentation with Joint Label Fusion"
-
-Define $$ K_m = \langle |~A^{i,m}_N - T^{m}_N~|, |~A^{j,m}_N - T^{m}_N~|
-\rangle $$ then $$ M_x(i,j) =  ( \sum_m K_m )^\beta $$ with $N$
-representing a neighborhood calculation, $A^{i,m}$ representing the
-$i^\text{th}$ atlas and the $m^\text{th}$ modality. Lagrange multipliers
-yield: $$w_x=\frac{M_x^{-1} 1_n}{1_n^t M_x^{-1} 1_n}$$
-
-Finally, local patch search is used to improve the neighborhoods that
-correspond.
-
-## JLF Example
-
-Suppose that a pair of atlases $A_1$ and $A_2$ produce statistically
-independent label errors for a given target image. If $A_1$ produces a
-wrong label 50\% of the time and $A_2$ produces a wrong label 20\% of
-the time, we have $$ M_x = \begin{bmatrix} 0.5       & 0.1 \\ 0.1
-& 0.2 \end{bmatrix} $$ The optimal voting weights are then $w_x = [0.2,
-0.8]^t.$
 
 **Simple ITK Integration**:  This proposal may appear ambitious given
 the modest budget.  However, our proposal builds upon existing work
@@ -186,8 +151,14 @@ segmentation with ITK-style tests;
 
 Beyond these first steps, we will also (most importatly, perhaps)
 implement step-by-step tutorial material based on the Simple ITK
-platform.  We feel this is best illustrated with a detailed example of
+platform.  We feel this is best illustrated with examples of
 this tutorial material which follows here.
+
+**FIXME Nick** can you add citations to specific classes that exist as "beta" versions
+which will be added to ITK, improved etc.
+
+**FIXME Nick** can you add a section in appropriate location regarding sparse transformation models (and say what we already have for sparse metric possibilities - i think we need to skip the ICDM stuff --- too complex)
+
 
 ## Simple ITK tutorial material for JF-augmented brain mapping
 
@@ -203,32 +174,33 @@ file](http://files.figshare.com/1699436/ptbp_summary_demographics.csv)
 with full data available at
 [figshare](http://figshare.com/articles/
 The_Pediatric_Template_of_Brain_Perfusion_PTBP_/923555).  We will use a
-lightly processed version of the data to make examples quick enough for
-tutorial material.
+lightly processed version of the data to make examples quick enough for "on the fly" tutorial material.
 
 We will use the sample PTBP subjects to:
 
-* Build a template based on deformable registration done in Simple ITK
+* *Tutorial 1:* Build a template based on deformable registration done in Simple ITK
 
-* Construct template priors with [Joint
+* *Tutorial 2:* Construct template priors with [Joint
 Fusion](http://www.ncbi.nlm.nih.gov/pubmed/22732662) and based on freely
 available labeled data
 
-* Normalize and segment the population data based on spatial prior-based
+* *Tutorial 3:* Normalize and segment the population data based on spatial prior-based
 gaussian mixture modeling.
+
+**FIXME** say some stuff about scripting and experience with ANTs MNI and ANTs USC and MICCAI and ITK tutorials ...
 
 This will all be put together to create a reproducible analysis for a
 subset of the PTBP. This material will be invaluable for better
 introducing the neuroscience and larger biomedical image analysis
 community to this broadly applicable and powerful quantification
-technology.
+technology. **FIXME** repeat technology again ...
 
 ## Relationship and benefits of the project to the SimpleITK/ITK effort
 
 Registration and segmentation are complementary tools that have often
 existed along independent software development paths.  Registration
 teams rarely intersected with segmentation teams.  Joint Fusion and
-related methods, however, serve as a meta-algorithm which uses
+related methods, however, serve as an integrative meta-algorithm which uses
 components of both classic registration and classic segmentation to
 improve upon the results obtained by either independently.  Making these
 bleeding edge algorithms available to the ITK and Simple-ITK community
@@ -239,7 +211,7 @@ effectively with biological and medical scientists.
 ## Advantages that the proposed work derives from SimpleITK/ITK
 
 We are excited about the opportunity to port our current JF and Atropos
-segmentation framework into the core of ITK.  Our prior experience has
+segmentation frameworks into the core of ITK.  Our prior experience has
 shown that the quality and lifespan of such algorithms is greatly
 improved when they are merged within the ITK ecosystem.  The deep
 testing, consistent use of valgrind to find memory defects and
@@ -269,7 +241,7 @@ of the ITKv4 development team.  Specifically, his team implemented a
 full refactoring of the ITK registration framework.  A few contributions
 of this framework include thread safety, the ability to implement
 composite transformations, multi-channel registration, extensibility and
-addition of cutting edge image similarity metrics for both intensity and
+addition of cutting edge diffeomorphic transformation models as well as image similarity metrics for both intensity and
 point set features.  In addition, an early version of GPU-based
 registration was implemented with OpenCL.  Dr. Gee was part of the
 original ITK development core and was also involved in the ITKv4
@@ -281,6 +253,15 @@ ITK-SNAP interactive segmentation software.  Dr. Yushkevich is a key
 contributor to the application of ITK core tools to neuroscience goals
 through his maintenance and continued development of the elegant and
 easily accessible ITK-SNAP user interface, which uses ITK underneath.
+Dr. Tustison has been involved in various aspects of ITK development
+since he arrived at PICSL in 2004.  He was initially charged with
+fulfillment of the requirements of a 2004-2005 A2D2 grant. Specifically,
+he designed and coded a set of classes to handle graph data types and an
+implementation of the popular ``graph cuts'' segmentation algorithm [@Tustison2008].
+Other widely-used contributions include generic scattered
+data approximation using B-splines [@Tustison2005], N4 bias correction
+[@Tustison2009e], an RGB faux-colormapping framework [@Tustison2008c], and point set
+registration [@Tustison2008a,Tustison2009b].
 
 Dr. Avants and Dr. Tustison also promote ITK through their software
 Advanced Normalization Tools (ANTs, originating at
@@ -311,7 +292,7 @@ business portion of the proposal.
 
 ## Budget for the work.
 
-We request a total of $100,000 which includes both direct and indirect
+We request a total of $100,000**FIXME** which includes both direct and indirect
 costs.
 
 Dr. Avants (5\%) will manage the conduct of the project and oversee the
@@ -331,7 +312,7 @@ project.   Dr. Tustison is among the top contributors to the Insight
 ToolKit as judged by the number of lines of code from each author that
 have survived and are still intact in the current revision of the
 Insight ToolKit.  He is  the 11th overall contributor according to this
-metric as of September 1, 2015.
+metric as of September 1, 2015. **FIXME** Explain why we went consulting route given your critical role
 
 \clearpage
 

@@ -242,8 +242,15 @@ ITK-SNAP interactive segmentation software.  Dr. Yushkevich is a key
 contributor to the application of ITK core tools to neuroscience goals
 through his maintenance and continued development of the elegant and
 easily accessible ITK-SNAP user interface, which uses ITK underneath.
-
-**FIXME** Nick add some stuff about yourself here
+Dr. Tustison has been involved in various aspects of ITK development
+since he arrived at PICSL in 2004.  He was initially charged with
+fulfillment of the requirements of a 2004-2005 A2D2 grant. Specifically,
+he designed and coded a set of classes to handle graph data types and an
+implementation of the popular ``graph cuts'' segmentation algorithm [@Tustison2008].
+Other widely-used contributions include generic scattered
+data approximation using B-splines [@Tustison2005], N4 bias correction
+[@Tustison2009e], an RGB faux-colormapping framework [@Tustison2008c], and point set
+registration [@Tustison2008a,Tustison2009b].
 
 Dr. Avants and Dr. Tustison also promote ITK through their software
 Advanced Normalization Tools (ANTs, originating at
