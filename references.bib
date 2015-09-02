@@ -2,12 +2,83 @@
 %% http://bibdesk.sourceforge.net/
 
 
-%% Created for Nick Tustison at 2015-09-02 09:08:39 -0700 
+%% Created for Nick Tustison at 2015-09-02 15:14:13 -0700 
 
 
 %% Saved with string encoding Unicode (UTF-8) 
 
 
+
+@article{Buades2008,
+	Author = {Antoni Buades and Bartomeu Coll and Jean-Michel Morel},
+	Date-Added = {2015-09-02 22:12:45 +0000},
+	Date-Modified = {2015-09-02 22:14:13 +0000},
+	Journal = {International Journal of Computer Vision},
+	Number = {2},
+	Pages = {123-139},
+	Title = {Nonlocal Image and Movie Denoising},
+	Volume = {76},
+	Year = {2008}}
+
+@article{Awate:2006aa,
+	Abstract = {Image restoration is an important and widely studied problem in computer vision and image processing. Various image filtering strategies have been effective, but invariably make strong assumptions about the properties of the signal and/or degradation. Hence, these methods lack the generality to be easily applied to new applications or diverse image collections. This paper describes a novel unsupervised, information-theoretic, adaptive filter (UINTA) that improves the predictability of pixel intensities from their neighborhoods by decreasing their joint entropy. In this way, UINTA automatically discovers the statistical properties of the signal and can thereby restore a wide spectrum of images. The paper describes the formulation to minimize the joint entropy measure and presents several important practical considerations in estimating neighborhood statistics. It presents a series of results on both real and synthetic data along with comparisons with current state-of-the-art techniques, including novel applications to medical image processing.},
+	Author = {Awate, Suyash P and Whitaker, Ross T},
+	Date-Added = {2015-09-02 22:12:08 +0000},
+	Date-Modified = {2015-09-02 22:12:08 +0000},
+	Doi = {10.1109/TPAMI.2006.64},
+	Journal = {IEEE Trans Pattern Anal Mach Intell},
+	Journal-Full = {IEEE transactions on pattern analysis and machine intelligence},
+	Mesh = {Algorithms; Artificial Intelligence; Computer Graphics; Humans; Image Enhancement; Image Interpretation, Computer-Assisted; Information Storage and Retrieval; Numerical Analysis, Computer-Assisted; Pattern Recognition, Automated; Reproducibility of Results; Sensitivity and Specificity; Signal Processing, Computer-Assisted},
+	Month = {Mar},
+	Number = {3},
+	Pages = {364-76},
+	Pmid = {16526423},
+	Pst = {ppublish},
+	Title = {Unsupervised, information-theoretic, adaptive image filtering for image restoration},
+	Volume = {28},
+	Year = {2006},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1109/TPAMI.2006.64}}
+
+@article{Tustison:2014aa,
+	Abstract = {Many studies of the human brain have explored the relationship between cortical thickness and cognition, phenotype, or disease. Due to the subjectivity and time requirements in manual measurement of cortical thickness, scientists have relied on robust software tools for automation which facilitate the testing and refinement of neuroscientific hypotheses. The most widely used tool for cortical thickness studies is the publicly available, surface-based FreeSurfer package. Critical to the adoption of such tools is a demonstration of their reproducibility, validity, and the documentation of specific implementations that are robust across large, diverse imaging datasets. To this end, we have developed the automated, volume-based Advanced Normalization Tools (ANTs) cortical thickness pipeline comprising well-vetted components such as SyGN (multivariate template construction), SyN (image registration), N4 (bias correction), Atropos (n-tissue segmentation), and DiReCT (cortical thickness estimation). In this work, we have conducted the largest evaluation of automated cortical thickness measures in publicly available data, comparing FreeSurfer and ANTs measures computed on 1205 images from four open data sets (IXI, MMRR, NKI, and OASIS), with parcellation based on the recently proposed Desikan-Killiany-Tourville (DKT) cortical labeling protocol. We found good scan-rescan repeatability with both FreeSurfer and ANTs measures. Given that such assessments of precision do not necessarily reflect accuracy or an ability to make statistical inferences, we further tested the neurobiological validity of these approaches by evaluating thickness-based prediction of age and gender. ANTs is shown to have a higher predictive performance than FreeSurfer for both of these measures. In promotion of open science, we make all of our scripts, data, and results publicly available which complements the use of open image data sets and the open source availability of the proposed ANTs cortical thickness pipeline.},
+	Author = {Tustison, Nicholas J and Cook, Philip A and Klein, Arno and Song, Gang and Das, Sandhitsu R and Duda, Jeffrey T and Kandel, Benjamin M and van Strien, Niels and Stone, James R and Gee, James C and Avants, Brian B},
+	Date-Added = {2015-09-02 22:02:26 +0000},
+	Date-Modified = {2015-09-02 22:02:26 +0000},
+	Doi = {10.1016/j.neuroimage.2014.05.044},
+	Journal = {Neuroimage},
+	Journal-Full = {NeuroImage},
+	Keywords = {Advanced Normalization Tools; Age prediction; Gender prediction; MRI; Open science; Scientific reproducibility},
+	Mesh = {Adolescent; Adult; Aged; Aged, 80 and over; Aging; Algorithms; Cerebral Cortex; Child; Child, Preschool; Databases, Factual; Female; Humans; Image Processing, Computer-Assisted; Magnetic Resonance Imaging; Male; Middle Aged; Reproducibility of Results; Sex Characteristics; Software; Young Adult},
+	Month = {Oct},
+	Pages = {166-79},
+	Pmid = {24879923},
+	Pst = {ppublish},
+	Title = {Large-scale evaluation of ANTs and FreeSurfer cortical thickness measurements},
+	Volume = {99},
+	Year = {2014},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1016/j.neuroimage.2014.05.044}}
+
+@article{Manjon:2010aa,
+	Abstract = {PURPOSE: To adapt the so-called nonlocal means filter to deal with magnetic resonance (MR) images with spatially varying noise levels (for both Gaussian and Rician distributed noise).
+MATERIALS AND METHODS: Most filtering techniques assume an equal noise distribution across the image. When this assumption is not met, the resulting filtering becomes suboptimal. This is the case of MR images with spatially varying noise levels, such as those obtained by parallel imaging (sensitivity-encoded), intensity inhomogeneity-corrected images, or surface coil-based acquisitions. We propose a new method where information regarding the local image noise level is used to adjust the amount of denoising strength of the filter. Such information is automatically obtained from the images using a new local noise estimation method.
+RESULTS: The proposed method was validated and compared with the standard nonlocal means filter on simulated and real MRI data showing an improved performance in all cases.
+CONCLUSION: The new noise-adaptive method was demonstrated to outperform the standard filter when spatially varying noise is present in the images.},
+	Author = {Manj{\'o}n, Jos{\'e} V and Coup{\'e}, Pierrick and Mart{\'\i}-Bonmat{\'\i}, Luis and Collins, D Louis and Robles, Montserrat},
+	Date-Added = {2015-09-02 21:24:14 +0000},
+	Date-Modified = {2015-09-02 21:24:14 +0000},
+	Doi = {10.1002/jmri.22003},
+	Journal = {J Magn Reson Imaging},
+	Journal-Full = {Journal of magnetic resonance imaging : JMRI},
+	Mesh = {Algorithms; Artifacts; Brain; Humans; Image Enhancement; Image Interpretation, Computer-Assisted; Magnetic Resonance Imaging; Phantoms, Imaging; Reproducibility of Results; Sensitivity and Specificity; Signal Processing, Computer-Assisted},
+	Month = {Jan},
+	Number = {1},
+	Pages = {192-203},
+	Pmid = {20027588},
+	Pst = {ppublish},
+	Title = {Adaptive non-local means denoising of MR images with spatially varying noise levels},
+	Volume = {31},
+	Year = {2010},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1002/jmri.22003}}
 
 @article{Tustison2005,
 	Author = {N. J. Tustison and J. C. Gee},

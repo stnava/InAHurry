@@ -56,6 +56,32 @@ Number: 215-898-9708
 
 ## Purpose of the proposed work
 
+Two fundamental segmentation approaches in medical imaging are:
+
+* Multi-atlas segmentation and
+* Bayesian segmentation with priors (atlas-based or Markov Random Field (MRF) modeling).
+
+Whereas the latter has a significant developmental history spanning 30+ years,
+the former has seen extreme interest in the medical imaging community recently due to
+the general success of crowdsourcing solutions to problems.  Although other
+segmentation approaches are well-represented within the Insight Toolkit
+and SimpleITK (e.g., region growing and level sets), these popular segmentation
+approaches are glaringly absent.  This proposal aims to remedy this deficiency.
+
+In addition, we propose to provide two complementary items to the Insight Toolkit
+and SimpleITK:
+
+* sparse registration
+* spatially adaptive patch-based denoising.
+
+Since image registration is a crucial prerequisite for both prior-based segmentation
+approaches, the former serves to extend current ITK functionality to accommodate large
+images (e.g., microscopy) in mapping spatial priors.  The latter will augment the
+current patch-based denoising ITK framework for efficient data cleaning---another
+crucial prerequisite for well-performing segmentation algorithms.
+
+## Multi-atlas labeling
+
 **Annotations and anatomical labelings are critical to the
 interpretation and statistical analysis of biomedical images.** However
 such expert labeling is both expensive and time consuming to obtain and
@@ -82,19 +108,34 @@ statistical prediction models.  The end product of this procedure is,
 for a given new subject, the algorithmic "best guess" at the full
 anatomical label set within the image. The quality of this guess differs
 across algorithms and substantial effort has been invested in
-identifying the state-of-the-art in MAL.  [@SATA]
+identifying the state-of-the-art in MAL (see, for example, the recent
+[MICCAI 2012 Grand Challenge and Workshop on Multi-Atlas Labeling](https://masi.vuse.vanderbilt.edu/workshop2012/index.php/Main_Page)).
+
 
 **Joint Fusion (JF)** [@Wang:2012aa;@Wang:2013aa] is perhaps *the state-of-the-art
 algorithm* for MAL that is capable of predicting anatomical labels with
 accuracy that rivals expert anatomists [@Yushkevich:2010aa]. JF has proven its
-effectiveness in lung [@Tustison:2015aa], cardiac data [@x], the human brain
-[@x] and in multiple modality canine MRI [@x].  This technology has
-previously been made available only through a research-grade C++
-implementation available within Advanced Normalization Tools (ANTs
-[@Tustison]).  Its inclusion within ANTs is sensible in that the success
+effectiveness in lung [@Tustison:2015aa],
+[cardiac data](https://masi.vuse.vanderbilt.edu/workshop2013/index.php/Main_Page),
+the human brain [@Tustison:2014aa], and in
+[multiple modality canine MRI](https://masi.vuse.vanderbilt.edu/workshop2013/index.php/Main_Page).
+Currently this technology is available through an ITK-style C++ implementation
+available within Advanced Normalization Tools (ANTs).  Its inclusion within
+ANTs is sensible in that the success
 of JF and related methods depends heavily upon high quality deformable
 maps that transform the anatomical library image set into the target
 subject's physical space.
+
+**Patch-based Denoising** As part of the v4 round of ITK development, a patch-based
+denoising framework was contributed based on the work described in [@Awate:2006aa;@Buades2008].
+Such work is critical for data 'cleaning' prior to subsequent processing such
+as segmentation or normalization.  More recently, an alternative approach to denoising
+was proposed in [@Manjon:2010aa] which we implemented and put in ANTs.  This filter
+performs well with limited parameter choices to consider and is also relatively
+fast. We believe that this additional work would provide a much-needed complement to the
+existing denoising framework as well as the segmentation tools proposed.  Similar to the
+other tools discussed, a denoising application would be easily integrated into SimpleITK
+and increase the functionality of the toolkit.
 
 **This proposal will bring JF to the ITK and SimpleITK user community**.
  We will also document and promote the models with tutorial material
@@ -154,8 +195,36 @@ implement step-by-step tutorial material based on the Simple ITK
 platform.  We feel this is best illustrated with examples of
 this tutorial material which follows here.
 
-**FIXME Nick** can you add citations to specific classes that exist as "beta" versions
-which will be added to ITK, improved etc.
+As mentioned previously, much of the functionality that we are proposing already
+exists in an ITK-style format within ANTs.  Specifically, the following
+segmentation-related filters exist within the current ANTs repository and would
+be modified.
+
+* MAP-MRF segmentation ITK-style classes (details found in [@Avants:2011aa]):
+    * ``AtroposSegmentationImageFilter``
+    * ``ListSampleFunction`` (parent class---sample probability estimation)
+        * ``GaussianListSampleFunction``
+        * ``HistogramParzenWindowsListSampleFunction``
+        * ``JointHistogramParzenWindowsListSampleFunction``
+        * ``JointHistogramParzenShapeAndOrientationListSampleFunction``
+        * ``LogEuclideanGaussianListSampleFunction``
+        * ``ManifoldParzenWindowsListSampleFunction``
+        * ``PartialVolumeGaussianListSampleFunction``
+    * ``ListSampleToListSampleFilter`` (parent class---outlier filtering)
+        * ``BoxPlotQuantileListSampleFilter``
+        * ``GrubbsRosnerListSampleFilter``
+        * ``PassThroughListSampleFilter``
+
+* Multivariate multi-atlas fusion (details found in [@Wang:2012aa;@Wang:2013aa]):
+    * ``WeightedVotingFusionImageFilter``
+
+* Patch-based denoising (details found in [@Manjon:2010aa]):
+    * ``AdaptiveNonLocalMeansDenoisingImageFilter``
+
+Although these filters are tested frequently within the ANTs framework, certain
+improvements/modifications would be required before direct integration into the
+ITK library such as the inclusion of ITK-specific testing protocols.
+
 
 **FIXME Nick** can you add a section in appropriate location regarding sparse transformation models (and say what we already have for sparse metric possibilities - i think we need to skip the ICDM stuff --- too complex)
 
