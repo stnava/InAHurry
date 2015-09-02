@@ -27,7 +27,7 @@ Office of Research Services,  3451 Walnut Street, Suite P-221
 
 Philadelphia PA 19104-6205
 
-Email: PennAORS@lists.upenn.edu;  Phone Number: 215-746-0234;  Fax Number: 215-898-9708 
+Email: PennAORS@lists.upenn.edu;  Phone Number: 215-746-0234;  Fax Number: 215-898-9708
 
 ## List of all named personnel/investigators in the proposal
 
@@ -48,7 +48,7 @@ and more than 4,000 active faculty members. The scale and interdisciplinary
 character of research and teaching sets Penn apart, and the highly ranked Perelman
 School of Medicine is one of the top recipients of NIH funding in the country.
 As a leading institution for research in medical image analysis techniques, Penn provides an
-ideal environment to host the proposed image processing software development.
+ideal environment to host the proposed ITK software development.
 There is a wealth of medical imaging focused collaboration across laboratories in the
 Departments of Neurology, Psychology, Radiology and Psychiatry. More specifically, there
 is a long standing and highly productive collaboration between the Penn Computing &
@@ -76,6 +76,8 @@ ensure the generalized utility and robustness of the software:
 * Center of Clinical Epidemiology & Biostatistics
 * Institute for Translational Medicine & Therapeutics
 * The Mahoney Institute of Neurological Sciences.
+
+Each of these institutes will benefit from contributions to Simple ITK and increasing availability of ITK methods from scripting languages such as python.
 
 ## 2. The place of performance for the proposed work.
 
@@ -111,7 +113,7 @@ funded Neuroscience Neuroimaging Center, whose Morphometry, Statistics
 and Visualization Core is directed
 by Dr. Gee. PICSL is equipped with a large number of dual-processor
 workstations, all networked via gigabit
-Ethernet to a high performance 576-core compute cluster with more than 200TB of
+Ethernet to a high performance 576-core **FIXME numbers** compute cluster with more than 200TB of
 on-line RAID storage with a dedicated tape backup system. The cluster is located in a University-run commercial-grade server room with redundant power supplies, UPS power backup systems, fire suppression system and 24-hour restricted access and security. The cluster provides accces to a variety of commercial and customized software packages are available for
 statistical analysis, scientific computing, code development, and data visualization.
 
@@ -122,9 +124,9 @@ continuing support of the Insight Toolkit (ITK), PICSL leads the
 development of several significant open-source
 tools, including ITK-SNAP, ANTs/ANTsR, PipeDream and DTI-TK, and serves as
 as a key contributor to Camino and VoxBo.
-Several of the tools are consistently among the most active on NITRC.
+Several of the tools are consistently among the most active on NITRC and frequently cited within the quantitative image analysis literature.
 
-## 3. The Business Proposal should also describe any experience by the offering institution for software quality assurance, open-source software development and delivery
+## 3. Experience by the offering institution for software quality assurance, open-source software development and delivery
 
 The personnel involved in this application have the motivation
 and range of expertise necessary to bring these plans to fruition. The involvement of key
@@ -323,6 +325,8 @@ from PICSL will occupy the remaining positions in the team.
 
 ## 4. Policies regarding the distribution of intellectual property under open source licenses (specifically the use of a BSD-style license, familiarity with the licensing practices associated with ITK, or direct release of property to the public domain)
 
+**FIXME** list software and our licenses ....
+
 It is an explicit mission of PICSL to create comprehensive tools for brain mapping
 that are broadly accessible to the user community and improve the quality
 of neuroscience performed with imaging. In keeping with this mission, PICSL has an
@@ -342,7 +346,7 @@ practices of that project will be applied to the current work. These practices i
 by CMake); using online collaborative resources for maintaining informal specifications and design documents
 (JIRA); collaborative development aided by source version control (Git); extensive inline documentation of the
 code (Doxygen); automated builds and unit-testing on multiple operating systems (CTest); monitoring of build and
-test results using online dashboards (CDash); a rapid develop-test-release cycle (enabled by SourceForge.net’s
+test results using online dashboards (CDash); a rapid develop-test-release cycle (enabled by github.com
 release facilities). Implemented algorithms will be cross-platform and compile on, at minimum, MacOS, Windows and
 Linux-based operating systems such that usability and accessibility will be maximized. The CPack software will
 be used to provide 32-bit and 64-bit installation packages for Windows, MacOS and Linux operating systems and

@@ -7,7 +7,7 @@ csl: national-science-foundation-grant-proposals.csl
 output:
   pdf_document
 geometry:  margin=1in
-fontsize: 11pt
+fontsize: 12pt
 ---
 
 ## Expected cost (include direct and indirect/overhead costs) for the proposed work.
