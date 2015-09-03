@@ -5,8 +5,8 @@
 
 \begin{center}
 {\bf \Large
-Simple ITK prior-based segmentation:\\
-methods and tutorials}
+Simple ITK multi-atlas registration and segmentation:\\
+Methods and tutorials}
 \end{center}
 
 ## Purpose

@@ -6,7 +6,7 @@
 
 ## Cost
 
-The cost for this project is $1,000,000,000, as specified in the budget.
+The cost for this project is $99,995, as specified in the budget.
 All direct costs will go towards salaries of personnel involved in
 software development.
 

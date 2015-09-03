@@ -16,8 +16,8 @@ fontsize: 12pt
 
 \begin{center}
 {\bf \Large
-Simple ITK prior-based segmentation:\\
-methods and tutorials}
+Simple ITK multi-atlas registration and segmentation:\\
+Methods and tutorials}
 \end{center}
 
 ## Purpose
@@ -260,7 +260,7 @@ data approximation using B-splines [@Tustison2005], N4 bias correction
 
 ## Cost
 
-The cost for this project is $1,000,000,000, as specified in the budget.
+The cost for this project is $99,995, as specified in the budget.
 All direct costs will go towards salaries of personnel involved in
 software development.
 
@@ -442,7 +442,7 @@ applications. These NLM contracts were:
 | ASHS/AHEAD    | Yushkevich         | Pipelines for automatic segmentation of\
  anatomical structures in MRI scans using\
   multi-atlas joint label fusion.               |   GPL         |
-| Histolozee    | Adler              | GUI tool for visualization, alignment and\
+| HistoloZee    | Adler              | GUI tool for visualization, alignment and\
  segmentation of dense histology stacks and\
   MRI volumes.             |   GPL         |
 
