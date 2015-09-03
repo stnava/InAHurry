@@ -2,7 +2,7 @@ library( rmarkdown )
 
 stitchedFile <- "stitched.Rmd";
 
-rmdFiles <- c( "format.Rmd", "simple_itk.Rmd" )
+rmdFiles <- c( "format.Rmd", "technicalPortion.Rmd", "businessPortion.Rmd" )
 
 for( i in 1:length( rmdFiles ) )
   {
