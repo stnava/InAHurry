@@ -51,7 +51,7 @@ ventilation of the lung [@Tustison:2011aa].
 However, despite the numerous algorithms and other developments which have been proposed
 over the years, there are an extremely limited number of software implementations to
 perform these types of segmentations *including within the Insight Toolkit and SimpleITK*.
-This lack within the segmentation community inspired us to create our own Bayesian-based
+This deficit inspired us to create our own Bayesian-based
 segmentation framework [@Avants:2011aa] (denoted as Atropos) which we made publicly
 available within our own ANTs repository.  The modular nature of this particular implementation
 would fit within the parameters of the ITK library.
@@ -109,8 +109,7 @@ proposal builds upon existing work within ANTs to make these goals achievable.
 These classes were written in ITK-style format so integrating
 these classes into the ITK library using the gerrit review system will be
 straightforward.  However, we will need to write
-individual tests for these classes ensuring proper code coverage and function
-testing.
+individual unit tests for these classes ensuring proper code coverage and function testing. We will use simulated data produced on the fly in code.
 
 4. __SimpleITK integration and generation of tutorial material.__  We will implement appropriate wrapping,
 documentation and metadata for SimpleITK.  Beyond these first steps, we will also (most importantly, perhaps)
