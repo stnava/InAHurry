@@ -188,7 +188,7 @@ applications. These NLM contracts were:
 | ASHS/AHEAD    | Yushkevich         | Pipelines for automatic segmentation of\
  anatomical structures in MRI scans using\
   multi-atlas joint label fusion.               |   GPL         |
-| Histolozee    | Adler              | GUI tool for visualization, alignment and\
+| HistoloZee    | Adler              | GUI tool for visualization, alignment and\
  segmentation of dense histology stacks and\
   MRI volumes.             |   GPL         |
 
