@@ -9,17 +9,6 @@ output:
 geometry:  margin=1in
 fontsize: 12pt
 ---
-# TECHNICAL PORTION
-
-\clearpage
-\newpage
-
-\begin{center}
-{\bf \Large
-Simple ITK multi-atlas registration and segmentation:\\
-Methods and tutorials}
-\end{center}
-
 ## Purpose
 Two fundamental segmentation approaches in medical imaging are:
 
@@ -62,10 +51,7 @@ was one of the first to use EM for finding a locally optimal solution by iterati
 bias field estimation and tissue segmentation.  Core components of this type of work is
 the explicit modeling of the tissue intensity values as statistical distributions
 [@Cline:1990aa;@Kikinis:1992aa] and the use of MRF modeling [@Geman:1984aa] for regularizing
-the classification results [@Held:1997aa].  A more formalized integration of generic MRF
-spatial priors was employed in the work of [@Zhang:2001aa], commonly referred to as
-FAST (FMRIB’s Automated Segmentation Tool), which is in widespread use given its public
-availability and good performance.  Recently, reseachers have begun to rely on spatial
+the classification results [@Held:1997aa].  Recently, reseachers have begun to rely on spatial
 prior probability maps of anatomical structures of interest to encode domain knowledge
 [@Van-Leemput:1999aa;@Ashburner:2005aa] by providing spatial
 prior probability maps and an initial segmentation.  Although this particular segmentation
@@ -179,11 +165,7 @@ in general innovative software development with a collective extensive ITK contr
 history.  The project team comprises the following persons:
 
 * Brian B. Avants (PI, 0.6 c.m. effort) is an Assistant Professor of Radiology
-at the University of Pennsylvania.  He has a Ph.D. in Biongineering
-and Masters in Computer Science from the University of Pennsylvania with
-expertise in the development of analysis stems for multidimensional
-medical datasets that include imaging with a particular emphasis on
-open-source dissemination.  He is the founder and lead
+at the University of Pennsylvania.  Dr. Avants is the founder and lead
 developer for the ITK-based Advanced Normalization Tools (ANTs)
 toolkit which is considered by many to be the premier medical image
 registration toolkit in the world.  He is also the founder and lead
@@ -202,7 +184,7 @@ image similarity metrics for both intensity and
 point set features.  In addition, an early version of GPU-based
 registration was implemented with OpenCL.
 
-* James C. Gee (??, 0.24 c.m. effort) is an Associate Professor of Radiologic
+* James C. Gee (Co-investigator, 0.24 c.m. effort) is an Associate Professor of Radiologic
 Science in Radiology at the University of Pennsylvania where he currently
 serves in several directorships including that of the Penn Image Computing and
 Science Laboratory (PICSL).  Dr. Gee's major area of interest is biomedical
@@ -215,7 +197,7 @@ for this proposal is that Dr. Gee was part of the original ITK development core.
 More recently he was the PI on the  ITKv4 registration refactoring efforts.  He has also
 obtained several A2D2 grants in collaboration with Drs. Avants and Tustison.
 
-* Paul Yushkevich (??, 0.24 c.m. effort) is an Associate Professor of Radiology at the
+* Paul Yushkevich (Co-investigator, 0.24 c.m. effort) is an Associate Professor of Radiology at the
 University of Pennsylvania. His Ph.D. is in Computer Science and he has published over
 90 papers on computational medical image analysis and led in the development of a broad
 range of methods including continuous medial representation, joint label fusion for
@@ -237,7 +219,7 @@ and developing advanced image segmentation pipelines for the XNAT server at the 
 for Functional Neuroimaging, which hosts data from multiple large neuroimaging research
 projects.
 
-* Nicholas J. Tustison (consultant, ?? effort) is an Assistant Professor of Radiology
+* Nicholas J. Tustison (consultant) is an Assistant Professor of Radiology
 and Medical Imaging at the University of Virginia.   Dr. Tustison has been involved in
 various aspects of ITK development since he arrived at PICSL in 2004.  He was initially charged with
 fulfillment of the requirements of a 2004-2005 A2D2 grant where
@@ -250,10 +232,17 @@ data approximation using B-splines [@Tustison2005], N4 bias correction
 
 ## Budget.
 
-\clearpage
-\newpage
+We request a total of $99,955 which includes both direct and indirect costs.
 
-# BUSINESS PORTION
+Dr. Avants (5% effort, $7,380.07) will manage the conduct of the project and oversee the project’s successful completion of milestones and deliverables including testing, software development and construction of tutorial material.
+
+Dr. Yushkevich (2% effort, $4,025.49) is a co-inventor of the original Joint Label Fusion algorithm. Dr. Yushkevich will contribute to testing and validating the ITK and SimpleITK implementations of JF.
+
+Dr. Gee (2% effort, $4,846.45) has been involved in the Insight ToolKit since its inception and will contribute his substantial registration expertise and project management skills to the team.
+
+Dr. Tustison (consultant services billed at $46,245) will be the lead software developer for this project. Dr. Tustison is among the top contributors to the Insight ToolKit as judged by the number of lines of code from each author that have survived and are still intact in the current revision of the Insight ToolKit. He is the 11th overall contributor according to this metric as of September 1, 2015.
+
+University of Pennsylvania indirect costs for this project total $37,498.20.
 
 \clearpage
 \newpage
@@ -463,6 +452,53 @@ the use of Git/Gerrit/GitHub (for ITK components).
 software testing practices for all components developed in this project.
 * To ensure that all algorithms and technologies integrated into ITK are
 not protected by patents that would preclude their inclusion in ITK.
+
+This proposal may appear ambitious given
+the modest budget.  However, our proposal builds upon existing work
+within ANTs to make these goals achievable.  Primarily, we will port the
+near-ITK quality existing code into the ITK ecosystem for review by
+other developers via the Gerrit code review system.  We are strongly
+familiar with this system as the team members, particularly lead
+developer Nicholas Tustison, regularly contribute to ITK.  Thus, the
+effort, here, will follow a natural progression:
+
+* Augment existing ANTs classes that implement prior-based and JF
+segmentation with ITK-style tests;
+
+* Pass these for review to Gerrit;
+
+* Implement code refactoring/documentation requested by ITK core;
+
+* Implement appropriate wrapping, documentation and metadata for Simple ITK.
+
+Beyond these first steps, we will also (most importatly, perhaps)
+implement step-by-step tutorial material based on the Simple ITK
+platform.  
+
+**Simple ITK tutorial material**:  We will employ freely available *real neuroimaging data* on which to base the tutorial material and to promote reproducibility and transparency via open source software. We will employ the Pediatric Template of Brain Perfusion
+(PTBP) [at
+figshare](http://figshare.com/articles/
+The_Pediatric_Template_of_Brain_Perfusion_PTBP_/923555) which includes
+free and easy to access multiple modality MRI data with demographics and psychometrics. The data is accompanied by an [organized csv
+file](http://files.figshare.com/1699436/ptbp_summary_demographics.csv)
+with full data available at [figshare](http://figshare.com/articles/
+The_Pediatric_Template_of_Brain_Perfusion_PTBP_/923555).  We will use a
+lightly processed version of the data to make examples quick enough for "on the fly" tutorial material.
+
+We will use the sample PTBP subjects to:
+
+* *Tutorial 1:* Build a template based on deformable registration done in Simple ITK
+
+* *Tutorial 2:* Construct template priors with [Joint
+Fusion](http://www.ncbi.nlm.nih.gov/pubmed/22732662) and based on freely
+available labeled data
+
+* *Tutorial 3:* Normalize and segment the population data based on spatial prior-based
+gaussian mixture modeling.
+
+We have prior experience conducting ANTs, ANTsR and ITK tutorials on similar topics. This will all be put together to create a reproducible analysis for a
+subset of the PTBP. This material, which will itself be open source, will be invaluable for better introducing the neuroscience and larger biomedical image analysis community to this broadly applicable and powerful quantification
+technology.
 
 \clearpage
 \newpage

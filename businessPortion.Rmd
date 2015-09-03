@@ -1,9 +1,4 @@
 
-# BUSINESS PORTION
-
-\clearpage
-\newpage
-
 ## Cost
 
 The cost for this project is $99,995, as specified in the budget.
@@ -209,6 +204,53 @@ the use of Git/Gerrit/GitHub (for ITK components).
 software testing practices for all components developed in this project.
 * To ensure that all algorithms and technologies integrated into ITK are
 not protected by patents that would preclude their inclusion in ITK.
+
+This proposal may appear ambitious given
+the modest budget.  However, our proposal builds upon existing work
+within ANTs to make these goals achievable.  Primarily, we will port the
+near-ITK quality existing code into the ITK ecosystem for review by
+other developers via the Gerrit code review system.  We are strongly
+familiar with this system as the team members, particularly lead
+developer Nicholas Tustison, regularly contribute to ITK.  Thus, the
+effort, here, will follow a natural progression:
+
+* Augment existing ANTs classes that implement prior-based and JF
+segmentation with ITK-style tests;
+
+* Pass these for review to Gerrit;
+
+* Implement code refactoring/documentation requested by ITK core;
+
+* Implement appropriate wrapping, documentation and metadata for Simple ITK.
+
+Beyond these first steps, we will also (most importatly, perhaps)
+implement step-by-step tutorial material based on the Simple ITK
+platform.  
+
+**Simple ITK tutorial material**:  We will employ freely available *real neuroimaging data* on which to base the tutorial material and to promote reproducibility and transparency via open source software. We will employ the Pediatric Template of Brain Perfusion
+(PTBP) [at
+figshare](http://figshare.com/articles/
+The_Pediatric_Template_of_Brain_Perfusion_PTBP_/923555) which includes
+free and easy to access multiple modality MRI data with demographics and psychometrics. The data is accompanied by an [organized csv
+file](http://files.figshare.com/1699436/ptbp_summary_demographics.csv)
+with full data available at [figshare](http://figshare.com/articles/
+The_Pediatric_Template_of_Brain_Perfusion_PTBP_/923555).  We will use a
+lightly processed version of the data to make examples quick enough for "on the fly" tutorial material.
+
+We will use the sample PTBP subjects to:
+
+* *Tutorial 1:* Build a template based on deformable registration done in Simple ITK
+
+* *Tutorial 2:* Construct template priors with [Joint
+Fusion](http://www.ncbi.nlm.nih.gov/pubmed/22732662) and based on freely
+available labeled data
+
+* *Tutorial 3:* Normalize and segment the population data based on spatial prior-based
+gaussian mixture modeling.
+
+We have prior experience conducting ANTs, ANTsR and ITK tutorials on similar topics. This will all be put together to create a reproducible analysis for a
+subset of the PTBP. This material, which will itself be open source, will be invaluable for better introducing the neuroscience and larger biomedical image analysis community to this broadly applicable and powerful quantification
+technology.
 
 \clearpage
 \newpage
