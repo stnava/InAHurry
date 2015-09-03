@@ -59,7 +59,7 @@ Number: 215-898-9708
 Two fundamental segmentation approaches in medical imaging are:
 
 * Multi-atlas segmentation and
-* Bayesian segmentation with priors (atlas-based or Markov Random Field (MRF) modeling).
+* Bayesian segmentation with priors (anatomical or Markov Random Fields (MRF)).
 
 Whereas the latter has a significant developmental history spanning 30+ years,
 the former has seen extreme interest in the medical imaging community recently due to
@@ -71,7 +71,7 @@ approaches are glaringly absent.  This proposal aims to remedy this deficiency.
 In addition, we propose to provide two complementary items to the Insight Toolkit
 and SimpleITK:
 
-* sparse registration
+* sparse registration and
 * spatially adaptive patch-based denoising.
 
 Since image registration is a crucial prerequisite for both prior-based segmentation
@@ -80,53 +80,113 @@ images (e.g., microscopy) in mapping spatial priors.  The latter will augment th
 current patch-based denoising ITK framework for efficient data cleaning---another
 crucial prerequisite for well-performing segmentation algorithms.
 
-## Multi-atlas labeling
+## Multi-atlas segmentation/labeling
 
-**Annotations and anatomical labelings are critical to the
+**Expert anatomical labelings are critical to the
 interpretation and statistical analysis of biomedical images.** However
-such expert labeling is both expensive and time consuming to obtain and
-often out of reach for many institutions due to lack of local expertise
-and/or funding to hire such expertise. However, libraries of expert
-annotations are becoming available in ever increasing numbers. Expert
-annotation on biomedical imaging may exist at different scales from
-labeling cell types in histology to labeling microscopic structures in
-optical images all the way up to millimeter or centimeter scale
-neuroanatomy visible in magnetic resonance images.  These digital
-annotations attached to biomedical images can take several hours to
-several weeks or more in order to create.  Therefore, it is of critical
-importance that the potential benefit of these resources is maximized.
-This requires that such datasets are distributed along with powerful
-open-source software that brings their value to as many researchers as
-possible.
+such expert labeling is both expensive and time consuming to obtain.  For
+example,  in the biomedical imaging domain, such annotations may exist at
+different scales from labeling cell types in histology to labeling microscopic
+structures in optical images all the way up to millimeter or centimeter scale
+neuroanatomy visible in MRI or CT.  These digital annotations attached to
+biomedical images can take several hours to several weeks or more in order to create.
+Given these constraints, such annotations are often out of reach for many research g
+roups and institutions due to lack
+of local expertise and/or funding to hire such expertise. As an alternative,
+public data libraries of expert annotations,
+often exploited within a multi-atlas labeling context (see below),
+are becoming increasingly more commonplace.   Therefore, it is of critical
+importance that such resources, both in terms of publicly available annotations
+and software, are distributed in a maximally beneficial way (e.g., ITK and SimpleITK
+for software distribution).
 
-**Multi-atlas labeling (MAL)** is the current state of the art for
-propagating expert labelings from a reference library onto new instances
+**Multi-atlas labeling (MAL)** is the current state-of-the-art for
+propagating expert labelings from a reference atlas library onto new instances
 of unlabeled data. The typical procedure for multiple atlas fusion
-involves common steps regardless of the underlying method. These steps
-include: (1) registration, (2) label transformation and (3) local
-statistical prediction models.  The end product of this procedure is,
-for a given new subject, the algorithmic "best guess" at the full
-anatomical label set within the image. The quality of this guess differs
-across algorithms and substantial effort has been invested in
-identifying the state-of-the-art in MAL (see, for example, the recent
-[MICCAI 2012 Grand Challenge and Workshop on Multi-Atlas Labeling](https://masi.vuse.vanderbilt.edu/workshop2012/index.php/Main_Page)).
+involves three common steps regardless of the underlying method:
 
+1. Normalization of the reference atlas grayscale images to the target image,
+2. Transformation of the atlas segmentations to the target image, and
+3. statistical prediction of the target segmentation.
 
-**Joint Fusion (JF)** [@Wang:2012aa;@Wang:2013aa] is perhaps *the state-of-the-art
-algorithm* for MAL that is capable of predicting anatomical labels with
-accuracy that rivals expert anatomists [@Yushkevich:2010aa]. JF has proven its
+In other words, image registration is used to align the atlas library (images + segmentations)
+to a common space.  A statistical model is then used to combine the "guesses" from all the
+normalized atlas labels to provide a "best guess" estimate of the target labeling.
+Given a set of input data, factors which most heavily influence the quality of this optimal
+estimate are:
+1) image registration accuracy and 2) the chosen statistical model.  See, for example,
+the recent [MICCAI 2012 Grand Challenge and Workshop on Multi-Atlas Labeling](https://masi.vuse.vanderbilt.edu/workshop2012/index.php/Main_Page)).[^1]
+
+[^1]: An interesting note about this competition was that it was meant to evaluate
+the team's statistical model for combining atlas labelings.  Without standardizing the
+normalization approach by the organizers, the results were somewhat inconclusive although
+it should be mentioned that the majority of the top ten performing algorithms all used
+ITK-based ANTs registration.
+
+**The joint fusion (JF) algorithm of [@Wang:2012aa;@Wang:2013aa] is one of the top performing
+MAL algorithms.**  JF is capable of predicting anatomical labels with
+accuracy that rivals expert anatomists [@Yushkevich:2010aa]. It has proven its
 effectiveness in lung [@Tustison:2015aa],
 [cardiac data](https://masi.vuse.vanderbilt.edu/workshop2013/index.php/Main_Page),
 the human brain [@Tustison:2014aa], and in
 [multiple modality canine MRI](https://masi.vuse.vanderbilt.edu/workshop2013/index.php/Main_Page).
 Currently this technology is available through an ITK-style C++ implementation
-available within Advanced Normalization Tools (ANTs).  Its inclusion within
-ANTs is sensible in that the success
+which can be found within Advanced Normalization Tools (ANTs).
+
+<!--
+
+Its inclusion within ANTs is sensible in that the success
 of JF and related methods depends heavily upon high quality deformable
 maps that transform the anatomical library image set into the target
 subject's physical space.
+-->
 
-**Patch-based Denoising** As part of the v4 round of ITK development, a patch-based
+## Bayesian segmentation with anatomical and/or MRF priors
+
+Early statistically-based segmentation work appropriated NASA satellite image processing
+software for classification of head tissues in 2-D MR images [@Vannier:1985aa]. Following
+this work, many researchers adopted statistical methods for $n$-tissue anatomical brain
+segmentation. The Expectation-Maximization (EM) framework is natural [@Dempster:1977aa]
+given the "missing data" aspect of this problem. The work described in [@Wells:1996aa]
+was one of the first to use EM for finding a locally optimal solution by iterating between
+bias field estimation and tissue segmentation.  Core components of this type of work is
+the explicit modeling of the tissue intensity values as statistical distributions
+[@Cline:1990aa;@Kikinis:1992aa] and the use of MRF modeling [@Geman:1984aa] for regularizing
+the classification results [@Held:1997aa].  A more formalized integration of generic MRF
+spatial priors was employed in the work of [@Zhang:2001aa], commonly referred to as
+FAST (FMRIB’s Automated Segmentation Tool), which is in widespread use given its public
+availability and good performance.  Recently, reseachers have begun to rely on spatial
+prior probability maps of anatomical structures of interest to encode domain knowledge
+[@Van-Leemput:1999aa;@Ashburner:2005aa] by providing spatial
+prior probability maps and an initial segmentation.  Although this particular segmentation
+framework has significant application in the neuroimaging domain, it has also applicable
+to other domains such as breast MRI [@Gubern-Merida:2015aa;@Ribes:2014aa] and functional
+ventilation of the lung [@Tustison:2011aa].
+
+However, despite the numerous algorithms and other developments which have been proposed
+over the years, there are an extremely limited number of software implementations to
+perform these types of segmentations *including within the Insight Toolkit and SimpleITK*.
+This lack within the segmentation community inspired us to create our own Bayesian-based
+segmentation framework [@Avants:2011aa] (denoted as Atropos) which we made publicly
+available within our own ANTs repository.  The modular nature of this particular implementation
+would fit within the parameters of the ITK library.
+
+## Sparse image registration
+
+Big data concerns not only affect the number of data sets for processing but also
+concern the size of the data sets.  For image registration, this can involve images
+which exceed the size and memory requirement of a typical brain MRI.  As developers
+of the ITK registration v4 framework, we are in a knowledgeable position to extend
+the existing classes to incorporating sparse image metrics and transforms which are
+capable of handling sparse information.  As part of our previous ITK development
+efforts, we developed image- and point-based metrics.  What we propose in this
+submission is a hybrid of the two where sparse point-sets are directly sampled
+from the image voxels along with voxel-specific intensity and gradient information
+which is then used to drive registration.
+
+## Patch-based Denoising
+
+ As part of the v4 round of ITK development, a patch-based
 denoising framework was contributed based on the work described in [@Awate:2006aa;@Buades2008].
 Such work is critical for data 'cleaning' prior to subsequent processing such
 as segmentation or normalization.  More recently, an alternative approach to denoising
@@ -136,6 +196,11 @@ fast. We believe that this additional work would provide a much-needed complemen
 existing denoising framework as well as the segmentation tools proposed.  Similar to the
 other tools discussed, a denoising application would be easily integrated into SimpleITK
 and increase the functionality of the toolkit.
+
+
+
+
+
 
 **This proposal will bring JF to the ITK and SimpleITK user community**.
  We will also document and promote the models with tutorial material
@@ -197,8 +262,7 @@ this tutorial material which follows here.
 
 As mentioned previously, much of the functionality that we are proposing already
 exists in an ITK-style format within ANTs.  Specifically, the following
-segmentation-related filters exist within the current ANTs repository and would
-be modified.
+ITK-style filters exist within the current ANTs repository:
 
 * MAP-MRF segmentation ITK-style classes (details found in [@Avants:2011aa]):
     * ``AtroposSegmentationImageFilter``
@@ -217,6 +281,10 @@ be modified.
 
 * Multivariate multi-atlas fusion (details found in [@Wang:2012aa;@Wang:2013aa]):
     * ``WeightedVotingFusionImageFilter``
+
+* Sparse registration
+    * ``ImageIntensityAndGradientToPointSetFilter``
+    * ``MeanSquaresPointSetToPointSetIntensityMetricv4``
 
 * Patch-based denoising (details found in [@Manjon:2010aa]):
     * ``AdaptiveNonLocalMeansDenoisingImageFilter``
